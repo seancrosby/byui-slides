@@ -1,0 +1,113 @@
+/* @theme byui */
+@import 'default';
+
+section {
+    width: 1280px;
+    height: 720px;
+    font-family: "Calibri", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 35px;
+    padding: 50px;
+    background-color: white;
+    color: #333;
+}
+
+h1 {
+    color: #204491;
+    font-size: 60px;
+}
+
+h2 {
+    color: #4F9ACF;
+    font-size: 45px;
+}
+
+footer {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    height: 60px;
+    width: 200px;
+    background-image: url('./assets/logo.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0.8in;
+    width: 300px;
+    background-image: url('./assets/logo.png');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Title Slide */
+section.title {
+    background-image: url('./assets/title-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 40px;
+}
+
+section.title h1 {
+    color: white;
+    font-size: 80px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+section.title h2 {
+    color: white;
+    margin-top: -40px;
+    margin-bottom: -10px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+section.title p {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+section.title footer {
+    display: none;
+}
+
+/* Section Header Slide */
+section.section-header {
+    background-color: #204491;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+section.section-header h1 {
+    color: white;
+    font-size: 70px;
+}
+
+section.section-header footer {
+    filter: brightness(0) invert(1);
+}
+
+/* Utilities */
+.columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}

@@ -1,0 +1,11 @@
+{
+  "name": "byui-slide-template",
+  "version": "0.0.1",
+  "description": "BYU-Idaho Marp Slide Template",
+  "scripts": {
+    "build": "marp --theme theme.css slides/example.md -o dist/example.html"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4.3.1"
+  }
+}
