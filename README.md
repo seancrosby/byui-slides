@@ -1,4 +1,4 @@
-# BYU-Idaho Marp Slide Template
+# BYU-Idaho Slides
 
 This repository provides a custom Marp theme and template for creating presentations that match the BYU-Idaho brand.
 
