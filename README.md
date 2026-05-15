@@ -50,6 +50,18 @@ The project supports [Mermaid](https://mermaid.js.org/) for creating diagrams di
 ### Flowcharts
 Use `graph TD` (Top-Down) or `graph LR` (Left-Right).
 
+**Source:**
+````markdown
+```mermaid
+graph TD
+    A[Start] --> B{Is it true?}
+    B -- Yes --> C[Correct]
+    B -- No --> D[Incorrect]
+    C --> E((Finish))
+```
+````
+
+**Result:**
 ```mermaid
 graph TD
     A[Start] --> B{Is it true?}
@@ -67,6 +79,18 @@ graph TD
 ### Sequence Diagrams
 Perfect for showing interactions between components.
 
+**Source:**
+````markdown
+```mermaid
+sequenceDiagram
+    participant User
+    participant System
+    User->>System: Request Data
+    System-->>User: Return Result
+```
+````
+
+**Result:**
 ```mermaid
 sequenceDiagram
     participant User
@@ -75,9 +99,54 @@ sequenceDiagram
     System-->>User: Return Result
 ```
 
+### UML Class Diagrams (Inheritance)
+Used for showing structure and relationships.
+
+**Source:**
+````markdown
+```mermaid
+classDiagram
+    class Animal {
+        +String name
+        +makeSound()
+    }
+    class Dog {
+        +bark()
+    }
+    Animal <|-- Dog : Inherits from
+```
+````
+
+**Result:**
+```mermaid
+classDiagram
+    class Animal {
+        +String name
+        +makeSound()
+    }
+    class Dog {
+        +bark()
+    }
+    Animal <|-- Dog : Inherits from
+```
+
 ### Gantt Charts
 Useful for project timelines.
 
+**Source:**
+````markdown
+```mermaid
+gantt
+    title Project Timeline
+    section Research
+    Planning :a1, 2026-05-15, 7d
+    Design   :after a1, 5d
+    section Implementation
+    Coding   :2026-05-27, 10d
+```
+````
+
+**Result:**
 ```mermaid
 gantt
     title Project Timeline
@@ -155,4 +224,3 @@ Since slides are in the `slides/` folder, reference images in the `assets/` fold
 - `dist/`: Generated output (ignored by git).
 - `build.sh`: Orchestration script.
 - `preprocess.py`: Preprocessing engine (inclusions, mermaid).
-
