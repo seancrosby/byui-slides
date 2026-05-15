@@ -105,3 +105,21 @@ hello_byui()
 
 - Standard Markdown syntax is supported.
 - Highlights keywords, strings, and comments.
+
+---
+
+# Mermaid Diagrams
+
+You can now include Mermaid diagrams directly in your slides:
+
+```mermaid
+graph LR
+    A[Markdown] --> B(Preprocessor)
+    B --> C{Success?}
+    C -- Yes --> D[Marp Slide]
+    C -- No --> E[Error]
+```
+
+---
+
+[$questions.md$]

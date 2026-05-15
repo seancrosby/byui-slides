@@ -58,17 +58,33 @@ if [ -d "assets" ]; then
     cp -r assets "$DIST_DIR/"
 fi
 
+# Function to run preprocessor
+preprocess_file() {
+    local file=$1
+    python3 preprocess.py "$file"
+}
+
 build_file() {
     local file=$1
     local filename=$(basename "$file" .md)
     local output_ext=$OUTPUT_TYPE
     
-    echo "Building $file to $DIST_DIR/$filename.$output_ext..."
+    # 1. Preprocess
+    preprocess_file "$file"
+    local preprocessed_file="build/$filename.md"
+    
+    # 2. Sync generated assets to dist
+    if [ -d "build/assets" ]; then
+        mkdir -p "$DIST_DIR/assets"
+        cp -r build/assets/* "$DIST_DIR/assets/" 2>/dev/null || true
+    fi
+
+    echo "Building $preprocessed_file to $DIST_DIR/$filename.$output_ext..."
     
     if [ "$OUTPUT_TYPE" = "pdf" ]; then
-        $MARP_CMD --theme "$THEME_FILE" --html --pdf "$file" -o "$DIST_DIR/$filename.pdf"
+        $MARP_CMD --theme "$THEME_FILE" --html --pdf "$preprocessed_file" -o "$DIST_DIR/$filename.pdf"
     else
-        $MARP_CMD --theme "$THEME_FILE" --html "$file" -o "$DIST_DIR/$filename.html"
+        $MARP_CMD --theme "$THEME_FILE" --html "$preprocessed_file" -o "$DIST_DIR/$filename.html"
     fi
 }
 

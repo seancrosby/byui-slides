@@ -28,9 +28,67 @@ Generating PDF slides requires a browser (Chrome, Chromium, Edge, or Firefox) to
 - `slides/`: Place your `.md` slide decks here.
 - `assets/`: Images, logos, and backgrounds used in slides.
 - `dist/`: Where your compiled HTML/PDF files will appear.
+- `build/`: Intermediate preprocessed files (useful for debugging).
 - `theme.css`: The shared BYUI theme.
 
-### 3. Build Your Slides
+### 4. Advanced Features (Preprocessing)
+
+This project includes a preprocessing step that adds powerful capabilities to your Markdown slides:
+
+#### File Inclusion
+You can pull content from one `.md` file into another using the `[$filename.md$]` syntax. This is perfect for shared slides like "Questions?" or "Conclusion."
+- Place shared files in the `common/` directory.
+- Use `[$questions.md$]` to insert the content of `common/questions.md`.
+
+#### Mermaid Diagrams
+The build script automatically detects Mermaid code blocks, renders them to PNG images, and includes them in your final slides.
+
+## Diagrams
+
+The project supports [Mermaid](https://mermaid.js.org/) for creating diagrams directly in Markdown. Here are the most common patterns you'll use:
+
+### Flowcharts
+Use `graph TD` (Top-Down) or `graph LR` (Left-Right).
+
+```mermaid
+graph TD
+    A[Start] --> B{Is it true?}
+    B -- Yes --> C[Correct]
+    B -- No --> D[Incorrect]
+    C --> E((Finish))
+```
+
+*   `[Square]` = Rectangular node
+*   `{Diamond}` = Decision node
+*   `((Circle))` = Goal/Event node
+*   `-->` = Simple arrow
+*   `-- Text -->` = Arrow with label
+
+### Sequence Diagrams
+Perfect for showing interactions between components.
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant System
+    User->>System: Request Data
+    System-->>User: Return Result
+```
+
+### Gantt Charts
+Useful for project timelines.
+
+```mermaid
+gantt
+    title Project Timeline
+    section Research
+    Planning :a1, 2026-05-15, 7d
+    Design   :after a1, 5d
+    section Implementation
+    Coding   :2026-05-27, 10d
+```
+
+### 5. Build Your Slides
 Use the provided `build.sh` script to build one or all decks:
 
 ```bash
@@ -45,12 +103,15 @@ Use the provided `build.sh` script to build one or all decks:
 ./build.sh --pdf example.md
 ```
 
-### 4. Serve Your Slides
+### 6. Serve Your Slides
 To view your slides locally (required for YouTube videos to work correctly), use the `serve.sh` script:
 
 ```bash
 # Start a local server at http://localhost:8080
 ./serve.sh
+
+# Start on a custom port
+./serve.sh 9000
 ```
 
 This will serve the `dist/` directory and open an `index.html` file listing all your compiled slide decks.
@@ -88,14 +149,10 @@ Since slides are in the `slides/` folder, reference images in the `assets/` fold
 
 ## Repository Structure
 - `slides/`: Markdown content.
+- `common/`: Reusable slide components.
 - `theme.css`: Custom BYUI styles.
 - `assets/`: Shared image assets.
 - `dist/`: Generated output (ignored by git).
 - `build.sh`: Orchestration script.
+- `preprocess.py`: Preprocessing engine (inclusions, mermaid).
 
-
-## TODO:
-
-* add a script to grab the latest changes from the template (git remote add template <TEMPLATE_REPO_URL>, git fetch --all, git merge template/main --allow-unrelated-histories)
-* add markdown content injection for slides that should appear in each slide deck, so avoid putting the content everywhere.
-* add script to check the markdown for accuracy, including all code samples.

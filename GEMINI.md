@@ -25,6 +25,13 @@ This project provides a Marp-based slide template inspired by the official BYU-I
     - Default: Build to HTML in `dist/`.
     - Flag `-p` or `--pdf`: Build to PDF in `dist/`.
     - **Automatic Index:** Generate `dist/index.html` with links to all built files.
+- **Preprocessing Step:**
+    - **File Inclusion:** Support `[$filename.md$]` syntax to include content from other markdown files (useful for common slides).
+    - **Mermaid Rendering:** Automatically detect `mermaid` code blocks, render them to PNG images using `mermaid-cli`, and replace the blocks with image references in the final slides.
+    - **Intermediate Build Directory:** Store preprocessed markdown and generated assets in a `build/` directory for review.
+- **Testing & CI:**
+    - **Unit Tests:** Python unit tests located in `tests/` to verify preprocessing logic (inclusion and mermaid detection).
+    - **GitHub Actions:** Automated CI workflow in `.github/workflows/ci.yml` that runs unit tests and a full integration build on every push.
 - **Serve Script (`serve.sh`):**
     - Serve the `dist/` folder on a local port (default 8080).
     - Support both `marp-cli` and `npx serve` as backends.
