@@ -1,5 +1,3 @@
----
-
 <!-- _class: section-header -->
 
 # Questions?
