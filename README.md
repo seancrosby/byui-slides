@@ -36,9 +36,9 @@ Generating PDF slides requires a browser (Chrome, Chromium, Edge, or Firefox) to
 This project includes a preprocessing step that adds powerful capabilities to your Markdown slides:
 
 #### File Inclusion
-You can pull content from one `.md` file into another using the `[$filename.md$]` syntax. This is perfect for shared slides like "Questions?" or "Conclusion."
+You can pull content from one `.md` file into another using the `!!!include(filename.md)!!!` syntax. This is perfect for shared slides like "Questions?" or "Conclusion."
 - Place shared files in the `common/` directory.
-- Use `[$questions.md$]` to insert the content of `common/questions.md`.
+- Use `!!!include(questions.md)!!!` to insert the content of `common/questions.md`.
 
 #### Mermaid Diagrams
 The build script automatically detects Mermaid code blocks, renders them to PNG images, and includes them in your final slides.

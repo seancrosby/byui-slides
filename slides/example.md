@@ -8,8 +8,8 @@ _paginate: false
 <!-- _class: title -->
 ![bg](../assets/spori.jpg)
 
-# [Course Name and Code]
-## [Topic of the day]
+# Example Slide Deck
+## A Few Things You May Want To Do
 Brother Crosby
 
 ---
@@ -122,4 +122,4 @@ graph LR
 
 ---
 
-[$questions.md$]
+!!!include(questions.md)!!!

@@ -16,12 +16,12 @@ def ensure_dir(directory):
 
 def resolve_includes(content, base_dir, visited=None):
     """
-    Recursively resolve [$filename.md$] tags.
+    Recursively resolve !!!include(filename.md)!!! tags.
     """
     if visited is None:
         visited = set()
 
-    pattern = r'\[\$(.*?)\$\]'
+    pattern = r'!!!include\((.*?)\)!!!'
     
     def replace_include(match):
         include_path = match.group(1).strip()
