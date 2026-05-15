@@ -36,35 +36,35 @@ class TestPreprocessor(unittest.TestCase):
         with open(os.path.join(self.common_dir, "test.md"), "w") as f:
             f.write("Included Content")
         
-        content = "Start\n[$test.md$]\nEnd"
+        content = "Start\n!!!include(test.md)!!!\nEnd"
         resolved = resolve_includes(content, ".")
         self.assertIn("Included Content", resolved)
-        self.assertNotIn("[$test.md$]", resolved)
+        self.assertNotIn("!!!include(test.md)!!!", resolved)
 
     def test_resolve_includes_recursive(self):
         with open(os.path.join(self.common_dir, "inner.md"), "w") as f:
             f.write("Inner Content")
         with open(os.path.join(self.common_dir, "outer.md"), "w") as f:
-            f.write("Outer\n[$inner.md$]")
+            f.write("Outer\n!!!include(inner.md)!!!")
         
-        content = "[$outer.md$]"
+        content = "!!!include(outer.md)!!!"
         resolved = resolve_includes(content, ".")
         self.assertIn("Outer", resolved)
         self.assertIn("Inner Content", resolved)
 
     def test_resolve_includes_missing(self):
-        content = "[$missing.md$]"
+        content = "!!!include(missing.md)!!!"
         resolved = resolve_includes(content, ".")
         self.assertIn("Error: Included file not found", resolved)
 
     def test_circular_inclusion(self):
         # Create a circular reference: A -> B -> A
         with open(os.path.join(self.common_dir, "A.md"), "w") as f:
-            f.write("[$B.md$]")
+            f.write("!!!include(B.md)!!!")
         with open(os.path.join(self.common_dir, "B.md"), "w") as f:
-            f.write("[$A.md$]")
+            f.write("!!!include(A.md)!!!")
         
-        content = "[$A.md$]"
+        content = "!!!include(A.md)!!!"
         # Initial visited set is usually {abspath(root_file)}
         root_path = os.path.abspath("root.md")
         resolved = resolve_includes(content, ".", {root_path})
