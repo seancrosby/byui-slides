@@ -6,7 +6,6 @@ _paginate: false
 ---
 
 <!-- _class: title -->
-![bg](../assets/spori.jpg)
 
 # Example Slide Deck
 ## A Few Things You May Want To Do

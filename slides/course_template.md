@@ -6,7 +6,6 @@ _paginate: false
 ---
 
 <!-- _class: title -->
-![bg](../assets/spori.jpg)
 
 # [Course Name and Code]
 ## [Topic of the day]
