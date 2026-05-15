@@ -33,9 +33,3 @@ This project provides a Marp-based slide template inspired by the official BYU-I
     - Usage instructions for the template and build script.
     - **Crash Course:** A section explaining Marp-specific Markdown syntax.
 
-## Roadmap
-1. [x] Extract images and assets from `byui-slide-template.pptx`.
-2. [x] Define the custom Marp theme (CSS).
-3. [x] Create the default `slides/example.md` template.
-4. [x] Create the `build.sh` script with multi-file support.
-5. [x] Update `README.md` with installation, usage details, and Markdown crash course.
