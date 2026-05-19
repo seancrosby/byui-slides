@@ -53,6 +53,11 @@ else
 fi
 
 # Ensure output directory exists and sync assets
+if [ -z "$TARGET_FILE" ]; then
+    echo "Cleaning out $DIST_DIR directory..."
+    rm -rf "$DIST_DIR"
+fi
+
 mkdir -p "$DIST_DIR"
 if [ -d "assets" ]; then
     cp -r assets "$DIST_DIR/"
