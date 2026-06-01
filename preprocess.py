@@ -149,7 +149,10 @@ def preprocess(input_path):
     
     # 2. Render Mermaid
     content = render_mermaid(content)
-    
+   
+    # 3. Rewrite relative asset paths for compiled HTML (../assets/ -> assets/)
+    content = content.replace("](../assets/", "](assets/")
+
     # Ensure build directory exists
     ensure_dir(BUILD_DIR)
     
