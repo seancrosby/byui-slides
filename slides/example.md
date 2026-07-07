@@ -36,7 +36,7 @@ You can also use **bold** and *italic* text.
 
 Here is how you can include a picture in the slide content.
 
-![bg right:40%](../assets/sample-image.jpg)
+![bg right:40%](../assets/taylor.jpg)
 
 - The image is placed on the right.
 - Text continues on the left.

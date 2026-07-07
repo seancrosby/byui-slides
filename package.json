@@ -1,9 +1,22 @@
 {
-  "name": "byui-slide-template",
-  "version": "0.0.1",
-  "description": "BYU-Idaho Marp Slide Template",
+  "name": "byui-slides",
+  "version": "0.1.0",
+  "description": "CLI for creating, building, and serving BYU-Idaho Marp slide decks",
+  "bin": {
+    "byui-slides": "./bin/byui-slides.js"
+  },
+  "files": [
+    "assets",
+    "bin",
+    "common",
+    "lib",
+    "slides",
+    "theme.css",
+    "README.md"
+  ],
   "scripts": {
-    "build": "marp --theme theme.css slides/example.md -o dist/example.html"
+    "build": "node ./bin/byui-slides.js build",
+    "test": "node --test"
   },
   "devDependencies": {
     "@marp-team/marp-cli": "^4.3.1",
